@@ -1,0 +1,28 @@
+Config
+aws configure
+
+View all available regions
+aws ec2 describe-regions --all-regions --output table
+
+Make bucket
+aws s3 mb s3://multi-cloud --region eu-north-1 
+
+View bucket files
+aws s3 ls s3://multi-cloud-app --recursive  
+
+Copy all files to bucket
+aws s3 cp ./assets s3://multi-cloud-app --recursive
+
+Push all modified files
+aws s3 sync ./assets s3://multi-cloud-app
+
+Set default website's page
+aws s3 website s3://multi-cloud-app --index-document index.html
+
+Allow to push bucket policy
+aws s3api put-public-access-block --bucket multi-cloud-app --public-access-block-configuration "BlockPublicAcls=false,IgnorePublicAcls=false,BlockPublicPolicy=false,RestrictPublicBuckets=false"
+
+Push bucket policy
+aws s3api put-bucket-policy --bucket multi-cloud-app --policy file://aws/bucket-policy.json
+
+Website now live on: https://multi-cloud-app.s3.eu-north-1.amazonaws.com/index.html
