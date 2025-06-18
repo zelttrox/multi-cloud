@@ -1,4 +1,4 @@
 sync:
 	aws s3 sync ./assets s3://multi-cloud-app
 	#azure
-	#gcp
+	gsutil cp -r ./assets gs://multi-cloud-app
