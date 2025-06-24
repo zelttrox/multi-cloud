@@ -2,14 +2,21 @@ Login
 gcloud auth login
 
 Make bucket
-gsutil mb -p hardy-album-463309-i0 -c standard -l europe-west3 gs://multi-cloud-app
+gsutil mb -p hardy-album-463309-i0 -c standard -l europe-west3 gs://multi-cloud-app0
 
 Copy all files to bucket
-gsutil cp -r ./assets gs://multi-cloud-app
+gsutil cp -r ./assets gs://multi-cloud-app0
 
 Set default website page
-gsutil web set -m index.html gs://multi-cloud-app
+gsutil web set -m index.html gs://multi-cloud-app0
 
 Set files visibility to public
-gsutil iam ch allUsers:objectViewer gs://multi-cloud-app
+gsutil iam ch allUsers:objectViewer gs://multi-cloud-app0
 
+List all files of bucket
+gsutil ls gs://multi-cloud-app0
+
+View bucket web config
+gsutil web get gs://multi-cloud-app
+
+Website is now live on: http://storage.googleapis.com/multi-cloud-app0/assets/index.html
